@@ -22,6 +22,35 @@ header h1 {
     color: #ffffff;
 }
 
+
+Main {
+    font-family: "Bitter", serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+main .container {
+    width: 30%;
+    background-color: #f1f1f1;
+    height: 450px;
+    margin:3rem 0;
+    box-shadow: 0 0 10px 1px rgba(0,0,0,0.5);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 Footer {
     font-family: "Bitter", serif;;
     background-color: var(--primary-color);
