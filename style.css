@@ -21,3 +21,18 @@ header h1 {
     text-align: center;
     color: #ffffff;
 }
+
+Footer {
+    font-family: "Bitter", serif;;
+    background-color: var(--primary-color);
+    padding: 0.9rem;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+}
+
+Footer p {
+    text-align: center;
+    color: #ffffff;
+    font-weight: 500;
+}
