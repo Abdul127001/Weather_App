@@ -31,15 +31,63 @@ Main {
 }
 
 main .container {
-    width: 30%;
+    max-width: 30%;
     background-color: #f1f1f1;
-    height: 450px;
+    max-height: 450px;
     margin:3rem 0;
+    flex-grow: 1;
     box-shadow: 0 0 10px 1px rgba(0,0,0,0.5);
+    
+}
+
+.container .search-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 2rem;
+    
+}
+
+.container .search-section .input-group {
+    width: 100%;
+    height: 45px;
+}
+
+.container .search-section .input-group input {
+    width: 100%;
+    height: 100%;
+    padding: 0.5rem 2.5rem;
+    border-radius: 0.5rem;
+    outline: none;
+    font-size: 1rem;
+    font-weight: 500;
+    border: 1px solid var(--primary-color);
+}
+
+.container .search-section .input-group span {
+    position: absolute;
+    top: 50%;
+    pointer-events: none;
+    left: 40px;
+    transform: translateY(-50%);
+}
+
+.location-group span {
+    padding: 0.5rem;
+    border-radius: 0.5rem;
 }
 
 
+.weather-section .hourly-weather .weather-list {
+    display: flex;
+    list-style: none;
+}
 
+.weather-section .hourly-weather .weather-list img {
+    aspect-ratio: 1;
+    width: 3rem;
+}
 
 
 
