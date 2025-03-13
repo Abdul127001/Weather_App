@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,100..900;1,100..900&family=Bree+Serif&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color:#6741d9;
+}
+
+header {
+    background-color: var(--primary-color);
+    padding: 1rem;
+    font-family: "Bree Serif", serif;
+    /* font-family: "Bitter", serif; */
+}
+
+header h1 {
+    text-align: center;
+    color: #ffffff;
+}
