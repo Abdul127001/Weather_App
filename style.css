@@ -32,7 +32,7 @@ Main {
 
 main .container {
     /* font-family: "Bitter", serif; */
-    max-width: 30%;
+    max-width: 450px;
     background-color: #f1f1f1;
     max-height: 450px;
     margin:3rem 0;
@@ -82,6 +82,7 @@ main .container {
 .location-group span {
     padding: 0.5rem;
     border-radius: 0.5rem;
+    cursor: pointer;
 }
 
 
@@ -100,6 +101,14 @@ main .container {
 .weather-section .current-weather h4 {
     color: #a39e9e;
     font-size: 2rem;
+}
+
+.weather-section .current-weather .temprature {
+    display: flex;
+}
+
+.weather-section .current-weather span {
+    font-size: 1rem;
 }
 
 .weather-section .current-weather p {
