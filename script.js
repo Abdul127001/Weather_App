@@ -25,18 +25,18 @@ const displayHourlyForecast = (h_data) => {
 
     WeatherList.innerHTML = next24HoursData.map(item => {
     const temp =  Math.floor(item?.temp_c);
-    const time = item?.time;
+    const time = item?.time.split(" ")[1].substring(0,5);
     const weatherIMG = Object.keys(weatherCodes).find(icon => weatherCodes[icon].includes(item?.condition?.code));
     
         return `<li>
                             <p class="time">${time}</p>
-                            <img src="images/animated/cloudy.svg" alt="weather-img">
+                            <img src="images/animated/${weatherIMG}.svg" alt="weather-img">
                             <p class="temprature">${temp}<span>°</span></p>
                         </li>`
 
     }).join("");
 
-    // console.log(HourlyData);
+    console.log(next24HoursData);
 
     
 }
