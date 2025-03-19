@@ -1,5 +1,6 @@
 const InputValue = document.querySelector('#search'),
-CurrWeather  = document.querySelector('.current-weather');
+CurrWeather  = document.querySelector('.current-weather'),
+WeatherList = document.querySelector('.hourly-weather .weather-list');
 const weatherCodes = {
     day:[1000],
     cloudy:[1003,1006,1009],
@@ -22,7 +23,7 @@ const displayHourlyForecast = (h_data) => {
     })
     // console.log(next24HoursData)
 
-    const HourlyData = next24HoursData.map(item => {
+    WeatherList.innerHTML = next24HoursData.map(item => {
     const temp =  Math.floor(item?.temp_c);
     const time = item?.time;
     const weatherIMG = Object.keys(weatherCodes).find(icon => weatherCodes[icon].includes(item?.condition?.code));
@@ -35,7 +36,7 @@ const displayHourlyForecast = (h_data) => {
 
     }).join("");
 
-    console.log(HourlyData);
+    // console.log(HourlyData);
 
     
 }
