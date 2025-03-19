@@ -13,7 +13,31 @@ const weatherCodes = {
 
 
 const displayHourlyForecast = (h_data) => {
+    const currentTime = new Date().setMinutes(0, 0, 0);
+    const next24Hours = currentTime + 24 * 60 * 60 * 1000;
 
+    const next24HoursData = h_data.filter(({time})=> {
+        const forcastTime = new Date(time).getTime();
+        return forcastTime >= currentTime && forcastTime <= next24Hours;
+    })
+    // console.log(next24HoursData)
+
+    const HourlyData = next24HoursData.map(item => {
+    const temp =  Math.floor(item?.temp_c);
+    const time = item?.time;
+    const weatherIMG = Object.keys(weatherCodes).find(icon => weatherCodes[icon].includes(item?.condition?.code));
+    
+        return `<li>
+                            <p class="time">${time}</p>
+                            <img src="images/animated/cloudy.svg" alt="weather-img">
+                            <p class="temprature">${temp}<span>°</span></p>
+                        </li>`
+
+    }).join("");
+
+    console.log(HourlyData);
+
+    
 }
 
 InputValue.addEventListener('keyup',(e)=>{
@@ -26,11 +50,11 @@ API_LINK = `http://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=${c_name
 try {
     const response = await fetch(API_LINK);
     const data = await response.json();
-    console.log(data)
+    // console.log(data)
     const temp = Math.floor(data?.current?.temp_c);
     const desc = data?.current?.condition?.text;
     const weatherIMG = Object.keys(weatherCodes).find(icon => weatherCodes[icon].includes(data?.current?.condition?.code));
-    const combinedDays = [...data?.forecast?.forecastday[0]?.hour, ...data?.forecast?.forecastday[1]?.hour]
+    const combinedDays = [...data?.forecast?.forecastday[0]?.hour, ...data?.forecast?.forecastday[1]?.hour];
     // console.log(combinedDays)
     displayHourlyForecast(combinedDays);
     CurrWeather.querySelector('.weather-img').src = `images/animated/${weatherIMG}.svg`;
