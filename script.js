@@ -1,6 +1,8 @@
 const InputValue = document.querySelector('#search'),
 CurrWeather  = document.querySelector('.current-weather'),
+LocationBTN = document.querySelector('.location-group'),
 WeatherList = document.querySelector('.hourly-weather .weather-list');
+const API_KEY = "2ce08207c8d945bbbc463740251403";
 const weatherCodes = {
     day:[1000],
     cloudy:[1003,1006,1009],
@@ -43,10 +45,9 @@ const displayHourlyForecast = (h_data) => {
 
 InputValue.addEventListener('keyup',(e)=>{
     // console.log(e.key)
-const API_KEY = "2ce08207c8d945bbbc463740251403";
-getWeatherDetails = async (c_name) => {
+
+getWeatherDetails = async (API_LINK) => {
 // console.log(c_name)
-API_LINK = `http://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=${c_name}&days=2`;
 
 try {
     const response = await fetch(API_LINK);
@@ -68,10 +69,28 @@ console.log(error);
 
 }
 
+    const getWeatherDetailsByCity = (CityName) => {
+        API_LINK = `http://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=${CityName}&days=2`;
+        getWeatherDetails(API_LINK);
+    }
 
-    
     const CityName = InputValue.value.trim();
     if(e.key == "Enter" && CityName) {
-        getWeatherDetails(CityName);
+        getWeatherDetailsByCity(CityName);
     }
+})
+
+
+LocationBTN.addEventListener('click', () => {
+    navigator.geolocation.getCurrentPosition(position => {
+        console.log(position);
+        const {latitude, longitude} = position.coords;
+        // console.log(latitude, longitude);
+        API_LINK = `http://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=${latitude},${longitude}&days=2`;
+        getWeatherDetails(API_LINK);
+
+
+    }, error => {
+        alert("Your browser disabling the location, Please enbale the location.")
+    })
 })
