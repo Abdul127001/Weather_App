@@ -32,7 +32,7 @@ Main {
 
 main .container {
     /* font-family: "Bitter", serif; */
-    max-width: 450px;
+    max-width: 350px;
     background-color: #f1f1f1;
     max-height: 450px;
     margin:3rem 0;
@@ -171,14 +171,6 @@ body.show-no-result  .weather-section {
 .weather-section .hourly-weather .weather-list {
  font-size: 0.8rem;
 }
-
-
-
-
-
-
-
-
 
 
 
