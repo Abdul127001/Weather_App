@@ -37,17 +37,14 @@ const displayHourlyForecast = (h_data) => {
                         </li>`
 
     }).join("");
-
-    console.log(next24HoursData);
-
-    
+    // console.log(next24HoursData);
 }
 
-InputValue.addEventListener('keyup',(e)=>{
-    // console.log(e.key)
 
 getWeatherDetails = async (API_LINK) => {
 // console.log(c_name)
+window.innerWidth <=768 && InputValue.blur();
+document.body.classList.remove('show-no-result')
 
 try {
     const response = await fetch(API_LINK);
@@ -63,16 +60,22 @@ try {
     CurrWeather.querySelector('.temprature').innerHTML = `${temp}<span>℃</span>`;
     CurrWeather.querySelector('.description').innerText = `${desc}`;
 
+
+    InputValue.value = data.location.name;
+
 } catch(error) {
-console.log(error);
+    document.body.classList.add('show-no-result');
+}
 }
 
+const getWeatherDetailsByCity = (CityName) => {
+    API_LINK = `http://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=${CityName}&days=2`;
+    getWeatherDetails(API_LINK);
 }
 
-    const getWeatherDetailsByCity = (CityName) => {
-        API_LINK = `http://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=${CityName}&days=2`;
-        getWeatherDetails(API_LINK);
-    }
+
+InputValue.addEventListener('keyup',(e)=>{
+    // console.log(e.key)
 
     const CityName = InputValue.value.trim();
     if(e.key == "Enter" && CityName) {
@@ -80,10 +83,11 @@ console.log(error);
     }
 })
 
+getWeatherDetailsByCity("mumbai");
 
 LocationBTN.addEventListener('click', () => {
     navigator.geolocation.getCurrentPosition(position => {
-        console.log(position);
+        // console.log(position);
         const {latitude, longitude} = position.coords;
         // console.log(latitude, longitude);
         API_LINK = `http://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=${latitude},${longitude}&days=2`;
@@ -94,3 +98,4 @@ LocationBTN.addEventListener('click', () => {
         alert("Your browser disabling the location, Please enbale the location.")
     })
 })
+

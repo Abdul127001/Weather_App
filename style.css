@@ -85,6 +85,32 @@ main .container {
     cursor: pointer;
 }
 
+.no-result  {
+    padding: 0 40px;
+    box-sizing: border-box;
+    text-align: center;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+body.show-no-result .no-result {
+    display: flex;
+}
+.no-result img {
+    width: 8rem;
+    height: 8rem;
+}
+
+.no-result .description {
+    color: #363636;
+}
+
+body.show-no-result  .weather-section {
+    visibility: hidden;
+}
 
 .weather-section .current-weather {
     display: flex;
