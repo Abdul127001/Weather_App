@@ -69,7 +69,7 @@ try {
 }
 
 const getWeatherDetailsByCity = (CityName) => {
-    API_LINK = `http://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=${CityName}&days=2`;
+    API_LINK = `https://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=${CityName}&days=2`;
     getWeatherDetails(API_LINK);
 }
 
@@ -90,7 +90,7 @@ LocationBTN.addEventListener('click', () => {
         // console.log(position);
         const {latitude, longitude} = position.coords;
         // console.log(latitude, longitude);
-        API_LINK = `http://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=${latitude},${longitude}&days=2`;
+        API_LINK = `https://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=${latitude},${longitude}&days=2`;
         getWeatherDetails(API_LINK);
 
 
